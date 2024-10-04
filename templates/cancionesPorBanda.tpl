@@ -13,8 +13,7 @@
                 </div>
             {/foreach}
         </div>
-        
-            <a class="btn btn-dark" href="showBandas"><b>Volver</b></a>
+        <a class="btn btn-dark" href="listaBandas">volver</a>
     </div>
 
 {include 'footer.tpl'}

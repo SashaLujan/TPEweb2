@@ -1,6 +1,8 @@
 <?php
 
 require_once 'controllers/public.controller.php';
+require_once 'controllers/login.controller.php';
+require_once 'controllers/admin.controller.php';
 
 // definimos la base url de forma dinamica
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -27,7 +29,7 @@ switch ($parametros[0]) {
         $controller->showCancionesByBanda($parametros[1]);
         break;
 
-        //acciones del login controller
+        //acciones del login.controller
     case 'suscribirse':
         $controller = new LoginController();
         $controller->formCheckIn();
@@ -42,6 +44,29 @@ switch ($parametros[0]) {
         $controller = new LoginController();
         $controller->logout();
         break;
+
+        //acciones del admin.controller
+    case 'agregarBanda':
+        $controller = new AdminController();
+        $controller->formBanda();
+        break;
+    case 'guardarBanda':
+        $controller = new AdminController();
+        $controller->addBanda();
+        break;
+    case 'editarBanda':
+        $controller = new AdminController();
+        $controller->editBanda($parametros[1]);
+        break;
+    case 'guardarEditBanda':
+        $controller = new AdminController();
+        $controller->modifyBanda();
+        break;
+    case 'eliminarBanda':
+        $controller = new AdminController();
+        $controller->deleteBanda($parametros[1]);
+        break;
+
 
     default:
         $controller = new PublicController();

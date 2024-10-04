@@ -15,4 +15,23 @@ class AdminView
         $this->smarty->assign('nameUser', $nameUser);
     }
 
+    //muestra un formulario para agregar una banda
+    public function formBandaAdd($error = null)
+    {
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('formBandaAdd.tpl');
+    }
+
+    //muestra un formulario para editar una banda
+    public function showFormEditBanda($banda)
+    {
+        $this->smarty->assign('listaBandas', $banda);
+        $this->smarty->display('showFormEditBanda.tpl');
+    }
+
+    public function showError($msg)
+    {
+        $this->smarty->assign('mensaje', $msg);
+        $this->smarty->display('error.tpl');
+    }
 }
