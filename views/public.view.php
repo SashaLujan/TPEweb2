@@ -11,12 +11,6 @@ class PublicView{
         $this->smarty = new Smarty();
     }
 
-    public function showHome($error = null)
-    {
-        $this->smarty->assign('error', $error);
-        $this->smarty->display('templates/showHome.tpl');
-    }
-
     public function showError($msg)
     {
         $this->smarty->assign('mensaje', $msg);
@@ -27,13 +21,19 @@ class PublicView{
     public function showBandas($bandas)
     {
         $this->smarty->assign('listaBandas', $bandas);
-        $this->smarty->display('templates/showBandas.tpl');
+        $this->smarty->display('showBandas.tpl');
     }
 
     //muetra todas las computadoras de una marca
     public function cancionesByBanda($cancionesPorBanda)
     {
         $this->smarty->assign('cancionesPorBanda', $cancionesPorBanda);
-        $this->smarty->display('templates/cancionesByBanda.tpl');
+        $this->smarty->display('cancionesPorBanda.tpl');
+    }
+
+     //muestra un formulario para poder cargar un usuario nuevo
+     public function formCheck($error=null){
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('formUser.tpl');
     }
 }

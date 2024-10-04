@@ -7,7 +7,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 
 //defino una accion por defecto
 if (empty($_GET['action'])) {
-    $_GET['action'] = 'home';
+    $_GET['action'] = 'listaBandas';
 }
 $accion = $_GET['action'];
 
@@ -16,10 +16,6 @@ $parametros = explode('/', $accion);
 switch ($parametros[0]) {
 
         //acciones del public.controller
-    case 'home':
-        $controller = new PublicController();
-        $controller->home();
-        break;
 
     case 'listaBandas':
         $controller = new PublicController();
@@ -30,8 +26,25 @@ switch ($parametros[0]) {
         $controller = new PublicController();
         $controller->showCancionesByBanda($parametros[1]);
         break;
-        
+
+        //acciones del login controller
+    case 'suscribirse':
+        $controller = new LoginController();
+        $controller->formCheckIn();
+        break;
+
+    case 'guardar_usuario':
+        $controller = new LoginController();
+        $controller->addUser();
+        break;
+
+    case 'cerrar_sesion':
+        $controller = new LoginController();
+        $controller->logout();
+        break;
+
     default:
         $controller = new PublicController();
         $controller->showError("Se ha producido un error, vuelva a intentarlo");
+        break;
 }

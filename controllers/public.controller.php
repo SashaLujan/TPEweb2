@@ -15,10 +15,6 @@ class PublicController{
         $this->viewPublic = new PublicView();
     }
 
-    public function home(){
-        $this->viewPublic->showHome();
-    }
-
     //muestra todas las bandas de la db
     public function showBandas(){
         //le pido las bandas al modelo

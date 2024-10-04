@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-09-2024 a las 01:20:05
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 05-10-2024 a las 00:11:48
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `bandas` (
   `id_banda` int(11) NOT NULL,
   `nombre_banda` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bandas`
+--
+
+INSERT INTO `bandas` (`id_banda`, `nombre_banda`) VALUES
+(1, 'The Beach Boys'),
+(2, 'Metallica');
 
 -- --------------------------------------------------------
 
@@ -45,7 +53,14 @@ CREATE TABLE `canciones` (
   `genero` varchar(50) NOT NULL,
   `id_banda_fk` int(11) NOT NULL,
   `id_disco_fk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `canciones`
+--
+
+INSERT INTO `canciones` (`id_cancion`, `nombre_cancion`, `letra`, `genero`, `id_banda_fk`, `id_disco_fk`) VALUES
+(1, 'Orion', 'letra', 'Heavy metal', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +72,34 @@ CREATE TABLE `discos` (
   `id_disco` int(11) NOT NULL,
   `nombre_disco` varchar(50) NOT NULL,
   `id_banda_fk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `discos`
+--
+
+INSERT INTO `discos` (`id_disco`, `nombre_disco`, `id_banda_fk`) VALUES
+(1, 'Master of Puppets', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `contraseña` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `nombre_usuario`, `contraseña`) VALUES
+(1, 'webadmin', 'webadmin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -85,6 +127,12 @@ ALTER TABLE `discos`
   ADD KEY `id_banda_fk` (`id_banda_fk`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -92,19 +140,25 @@ ALTER TABLE `discos`
 -- AUTO_INCREMENT de la tabla `bandas`
 --
 ALTER TABLE `bandas`
-  MODIFY `id_banda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_banda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `discos`
 --
 ALTER TABLE `discos`
-  MODIFY `id_disco` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_disco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
