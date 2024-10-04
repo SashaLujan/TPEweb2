@@ -5,4 +5,8 @@
 
     RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
     RewriteRule ^(.*)$ router.php?action=$1 [QSA,L]
+<<<<<<< HEAD
 </IfModule>
+=======
+</IfModule>
+>>>>>>> bc080250e780a49294860e7fbc5c28d44c952b5c
