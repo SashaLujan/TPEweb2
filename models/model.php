@@ -3,27 +3,15 @@ require_once('config/config.php');
 
 class Model
 {
-    public $db;
+    protected $db;
 
     public function __construct()
     {
-        $this->db = $this->createConection();
-    }
-
-    //Crea la conexión a la DB
-    protected function crearConexion()
-    {
-        $host = 'host';
-        $user = 'usuario';
-        $password = 'password';
-        $database = 'database';
-
-        try {
-            $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $password);
-        } catch (\Throwable $th) {
-            die($th);
-        }
-
-        return $pdo;
+        $this->db = new PDO(
+            "mysql:host=" . MYSQL_HOST .
+                ";dbname=" . MYSQL_DB . ";charset=utf8",
+            MYSQL_USER,
+            MYSQL_PASS
+        );
     }
 }
