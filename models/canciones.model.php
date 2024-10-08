@@ -1,25 +1,17 @@
 <?php
 
-class CancionesModel{
-    private function createConection()
-    {
-        $host = 'localhost';
-        $userName = 'root';
-        $password = '';
-        $database = 'db_tuletra';
-        $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $pdo;
-    }
+require_once 'model.php';
+class CancionesModel extends Model
+{
 
-    //muestra las canciones de una banda *preguntar si esta bien hecha la consulta
-    public function getCancionesByBandas($id){
-        $db = $this->createConection(); // 1. abro la conexión con MySQL 
+    //muestra las canciones de una banda 
+    public function getCancionesByBandas($id)
+    {
         //Creamos la consulta para obtener una categoria
-        $sentencia = $db->prepare("SELECT * FROM canciones
+        $sentencia = $this->db->prepare("SELECT * FROM canciones
         WHERE id_banda_fk = ?"); // prepara la consulta
         $sentencia->execute([$id]); // ejecuta
         $cancion = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
-        return $cancion; 
+        return $cancion;
     }
 }

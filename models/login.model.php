@@ -1,4 +1,5 @@
 <?php
 
-class LoginModel
+require_once 'model.php';
+class LoginModel extends Model
 {}
