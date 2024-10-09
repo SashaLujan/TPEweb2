@@ -36,4 +36,14 @@ class PublicView{
         $this->smarty->assign('error', $error);
         $this->smarty->display('formUser.tpl');
     }
+
+    public function showcanciones($canciones){
+        $this->smarty->assign('listaCanciones', $canciones);
+        $this->smarty->display('showCanciones.tpl');
+    }
+
+    public function showcancion($cancion){
+        $this->smarty->assign('cancion', $cancion);
+        $this->smarty->display('showCancion.tpl');
+    }
 }

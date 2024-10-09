@@ -38,4 +38,18 @@ class PublicController{
     public function showError($msg){
         $this->viewPublic->showError($msg);
     }
+
+    public function showCanciones(){
+        //le pido las canciones al modelo
+        $canciones = $this->modelCanciones->getAll();
+
+        //actualiazo la vista
+        $this->viewPublic->showCanciones($canciones);
+    }
+    public function showCancion($id){
+        //le pido las canciones al modelo
+        $cancion = $this->modelCanciones->cancion($id);
+        //actualiazo la vista
+        $this->viewPublic->showCancion($cancion);
+    }
 }

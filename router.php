@@ -18,6 +18,16 @@ $parametros = explode('/', $accion);
 switch ($parametros[0]) {
 
         //acciones del public.controller
+    case 'listaCanciones':
+        $controller = new PublicController();
+        $controller -> showCanciones();
+        break;
+    
+    case 'mostrarCancion':
+        $controller = new PublicController();
+        $controller->showCancion($parametros[1]);
+        break;
+
 
     case 'listaBandas':
         $controller = new PublicController();

@@ -29,7 +29,7 @@
                             <a class="nav-link" href="">discos</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="">canciones</a>
+                            <a class="nav-link" href="listaCanciones">canciones</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="suscribirse">registrarse</a>
