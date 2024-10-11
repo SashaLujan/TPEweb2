@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2024 a las 23:33:56
+-- Tiempo de generación: 11-10-2024 a las 23:42:35
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,16 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bandas` (
   `id_banda` int(11) NOT NULL,
-  `nombre_banda` varchar(50) NOT NULL
+  `nombre_banda` varchar(50) NOT NULL,
+  `img_banda` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `bandas`
 --
 
-INSERT INTO `bandas` (`id_banda`, `nombre_banda`) VALUES
-(1, 'The Beach Boys'),
-(2, 'Metallica');
+INSERT INTO `bandas` (`id_banda`, `nombre_banda`, `img_banda`) VALUES
+(1, 'The Beach Boys', ''),
+(2, 'Metallica', '');
 
 -- --------------------------------------------------------
 

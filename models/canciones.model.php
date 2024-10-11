@@ -29,7 +29,7 @@ class CancionesModel extends Model
         //Creamos la consulta para obtener la cancion
         $sentencia = $this->db->prepare("SELECT * FROM canciones WHERE id_cancion = ?"); // prepara la consulta
         $sentencia->execute([$id]); // ejecuta
-        $cancion = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        $cancion = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $cancion;
     }
 }
