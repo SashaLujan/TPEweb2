@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2024 a las 23:42:35
+-- Tiempo de generación: 11-10-2024 a las 23:50:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -52,16 +52,15 @@ CREATE TABLE `canciones` (
   `nombre_cancion` varchar(50) NOT NULL,
   `letra` text NOT NULL,
   `genero` varchar(50) NOT NULL,
-  `id_banda_fk` int(11) NOT NULL,
-  `id_disco_fk` int(11) NOT NULL
+  `id_banda_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `canciones`
 --
 
-INSERT INTO `canciones` (`id_cancion`, `nombre_cancion`, `letra`, `genero`, `id_banda_fk`, `id_disco_fk`) VALUES
-(1, 'Orion', 'letra', 'Heavy metal', 2, 1);
+INSERT INTO `canciones` (`id_cancion`, `nombre_cancion`, `letra`, `genero`, `id_banda_fk`) VALUES
+(1, 'Orion', 'letra', 'Heavy metal', 2);
 
 -- --------------------------------------------------------
 
@@ -98,8 +97,7 @@ ALTER TABLE `bandas`
 --
 ALTER TABLE `canciones`
   ADD PRIMARY KEY (`id_cancion`),
-  ADD KEY `id_banda_fk` (`id_banda_fk`,`id_disco_fk`),
-  ADD KEY `id_disco_fk` (`id_disco_fk`);
+  ADD KEY `id_banda_fk` (`id_banda_fk`);
 
 --
 -- Indices de la tabla `usuario`
