@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2024 a las 00:11:48
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.3.31
+-- Tiempo de generación: 11-10-2024 a las 23:33:56
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bandas` (
   `id_banda` int(11) NOT NULL,
   `nombre_banda` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `bandas`
@@ -53,7 +53,7 @@ CREATE TABLE `canciones` (
   `genero` varchar(50) NOT NULL,
   `id_banda_fk` int(11) NOT NULL,
   `id_disco_fk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `canciones`
@@ -61,25 +61,6 @@ CREATE TABLE `canciones` (
 
 INSERT INTO `canciones` (`id_cancion`, `nombre_cancion`, `letra`, `genero`, `id_banda_fk`, `id_disco_fk`) VALUES
 (1, 'Orion', 'letra', 'Heavy metal', 2, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `discos`
---
-
-CREATE TABLE `discos` (
-  `id_disco` int(11) NOT NULL,
-  `nombre_disco` varchar(50) NOT NULL,
-  `id_banda_fk` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `discos`
---
-
-INSERT INTO `discos` (`id_disco`, `nombre_disco`, `id_banda_fk`) VALUES
-(1, 'Master of Puppets', 2);
 
 -- --------------------------------------------------------
 
@@ -92,7 +73,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(30) NOT NULL,
   `nombre_usuario` varchar(50) NOT NULL,
   `contraseña` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -120,13 +101,6 @@ ALTER TABLE `canciones`
   ADD KEY `id_disco_fk` (`id_disco_fk`);
 
 --
--- Indices de la tabla `discos`
---
-ALTER TABLE `discos`
-  ADD PRIMARY KEY (`id_disco`),
-  ADD KEY `id_banda_fk` (`id_banda_fk`);
-
---
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -149,12 +123,6 @@ ALTER TABLE `canciones`
   MODIFY `id_cancion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `discos`
---
-ALTER TABLE `discos`
-  MODIFY `id_disco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -168,14 +136,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  ADD CONSTRAINT `canciones_ibfk_1` FOREIGN KEY (`id_banda_fk`) REFERENCES `bandas` (`id_banda`),
-  ADD CONSTRAINT `canciones_ibfk_2` FOREIGN KEY (`id_disco_fk`) REFERENCES `discos` (`id_disco`);
-
---
--- Filtros para la tabla `discos`
---
-ALTER TABLE `discos`
-  ADD CONSTRAINT `discos_ibfk_1` FOREIGN KEY (`id_banda_fk`) REFERENCES `bandas` (`id_banda`);
+  ADD CONSTRAINT `canciones_ibfk_1` FOREIGN KEY (`id_banda_fk`) REFERENCES `bandas` (`id_banda`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
