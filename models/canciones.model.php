@@ -27,7 +27,7 @@ class CancionesModel extends Model
     public function cancion($id){
 
         //Creamos la consulta para obtener la cancion
-        $sentencia = $this->db->prepare("SELECT * FROM canciones JOIN bandas ON  WHERE id_cancion = ?"); // prepara la consulta
+        $sentencia = $this->db->prepare("SELECT * FROM canciones JOIN bandas ON canciones.id_banda_fk = bandas.id_banda WHERE canciones.id_cancion = ?"); // prepara la consulta
         $sentencia->execute([$id]); // ejecuta
         $cancion = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $cancion;
