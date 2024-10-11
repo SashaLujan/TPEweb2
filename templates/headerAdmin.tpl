@@ -7,7 +7,8 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>tu letra</title>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="css/styles.css">
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         </head>
         <body>
             <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
@@ -26,19 +27,14 @@
                             <a class="nav-link" href="listaBandas">bandas</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="listaCanciones">canciones</a>
+                            <a class="nav-link" href="">discos</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="suscribirse">registrarse</a>
+                            <a class="nav-link" href="listaCanciones">canciones</a>
                         </li>
                     </ul>
                 </div>
-
-                <div class="login-container">
-                    <form action="loguearse" method="POST">
-                        <input type="text" placeholder="username" name="username">
-                        <input type="password" placeholder="Password" name="contraseña">
-                        <button type="submit">Login</button>
-                    </form>
+                <div>
+                    <a class="navbar-brand btn btn-dark" href="cerrar_sesion">Usuario: {$nameUser} | <b>Cerrar Sesión</b></a>
                 </div>
             </nav>

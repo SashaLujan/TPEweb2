@@ -2,17 +2,20 @@
 require_once 'models/bandas.model.php';
 require_once 'models/canciones.model.php';
 require_once 'views/public.view.php';
+require_once 'helpers/auth.helper.php';
 
 class PublicController{
     private $modelBandas;
     private $modelCanciones;
     private $viewPublic;
+    private $auth;
 
     public function __construct()
     {
         $this->modelBandas = new BandasModel();
         $this->modelCanciones = new CancionesModel();
         $this->viewPublic = new PublicView();
+        $this->auth = new AuthHelper();
     }
 
     //muestra todas las bandas de la db
@@ -20,8 +23,11 @@ class PublicController{
         //le pido las bandas al modelo
         $bandas = $this->modelBandas->getAll();
 
+        //verifica si esta logueado
+        $logueado = $this->auth->checkLogged();
+
         //actualiazo la vista
-        $this->viewPublic->showBandas($bandas);
+        $this->viewPublic->showBandas($bandas, $logueado);
     }
 
     //muestro las canciones que tiene una banda

@@ -31,11 +31,10 @@ class AuthHelper
     static public function checkLogged()
     {
         session_start();
-        if (!isset($_SESSION['nombre_usuario'])) {
-            header('Location: ' . BASE_URL . 'showBandas');
-            die();
+        if (isset($_SESSION['nombre_usuario'])) {
+            return true;
         } else {
-            return $_SESSION['nombre_usuario'];
+            return false;
         }
     }
 }
