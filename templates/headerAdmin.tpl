@@ -32,17 +32,9 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="listaCanciones">canciones</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="suscribirse">registrarse</a>
-                        </li>
                     </ul>
                 </div>
-
-                <div class="login-container">
-                    <form action="loguearse" method="POST">
-                        <input type="text" placeholder="username" name="username">
-                        <input type="password" placeholder="Password" name="contraseña">
-                        <button type="submit">Login</button>
-                    </form>
+                <div>
+                    <a class="navbar-brand btn btn-dark" href="cerrar_sesion">Usuario: {$nameUser} | <b>Cerrar Sesión</b></a>
                 </div>
             </nav>

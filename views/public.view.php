@@ -1,6 +1,7 @@
 <?php
 
 require_once 'libs/Smarty.class.php';
+require_once 'helpers/auth.helper.php';
 
 class PublicView{
 
@@ -9,6 +10,8 @@ class PublicView{
     public function __construct()
     {
         $this->smarty = new Smarty();
+        $nameUser = authHelper::nameLogged();
+        $this->smarty->assign('nameUser', $nameUser);
     }
 
     public function showError($msg)
@@ -18,9 +21,10 @@ class PublicView{
     }
 
     //muetra todas las bandas
-    public function showBandas($bandas)
+    public function showBandas($bandas, $logueado)
     {
         $this->smarty->assign('listaBandas', $bandas);
+        $this->smarty->assign('logueado', $logueado);
         $this->smarty->display('showBandas.tpl');
     }
 
