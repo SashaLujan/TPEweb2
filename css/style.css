@@ -8,3 +8,12 @@
     max-height: 200px;
     object-fit: cover;
 }
+#letraCancion{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size:1.5rem;
+}
+#parrafoGenero{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
