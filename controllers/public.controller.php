@@ -23,11 +23,8 @@ class PublicController{
         //le pido las bandas al modelo
         $bandas = $this->modelBandas->getAll();
 
-        //verifica si esta logueado
-        $logueado = $this->auth->checkLogged();
-
         //actualiazo la vista
-        $this->viewPublic->showBandas($bandas, $logueado);
+        $this->viewPublic->showBandas($bandas);
     }
 
     //muestro las canciones que tiene una banda
@@ -46,6 +43,7 @@ class PublicController{
     }
 
     public function showCanciones(){
+
         //le pido las canciones al modelo
         $canciones = $this->modelCanciones->getAll();
 
