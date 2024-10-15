@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="login-container">
-                    <form action="loguearse" method="POST">
+                    <form action="abrir_sesion" method="POST">
                         <input type="text" placeholder="username" name="username">
                         <input type="password" placeholder="Password" name="contraseña">
                         <button type="submit">Login</button>

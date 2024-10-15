@@ -22,7 +22,7 @@ class AuthHelper
             session_start();
         }
         if (isset($_SESSION['IS_LOGGED'])) {
-            return $_SESSION['nombre_usuario'];
+            return $_SESSION['USER_NAME'];
         }
         return null;
     }
@@ -30,11 +30,21 @@ class AuthHelper
     //verifica que haya algun usuario logueado y si no hay ninguno te manda al home
     static public function checkLogged()
     {
-        session_start();
-        if (isset($_SESSION['nombre_usuario'])) {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        if (isset($_SESSION['USER_NAME'])) {
             return true;
         } else {
             return false;
         }
+    }
+
+    static public function login($usuario){
+        if(session_status()!=PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        $_SESSION['IS_LOGGED']=true;
+        $_SESSION['USER_NAME']=$usuario->nombre_usuario;
     }
 }

@@ -3,6 +3,7 @@
 require_once 'models/login.model.php';
 require_once 'views/public.view.php';
 require_once 'views/admin.view.php';
+require_once 'helpers/auth.helper.php';
 
 class LoginController
 {
@@ -20,18 +21,32 @@ class LoginController
     
     public function login(){
         if(!empty($_POST)){
-
-            $email= $_
-            
+            $nombre_usuario= $_POST['username'];
+            $contraseña= $_POST['contraseña'];            
         }
+ 
+        $usuario = $this->modelLogin->getUser($nombre_usuario);
+        if(!empty($usuario)){
+            if($contraseña==$usuario->contraseña){
+
+                AuthHelper::login($usuario);
+                header("location: " . BASE_URL . 'listaBandas');
+            }
+        }else{
+            //TODO debería mostrar a la vista que el username no existe
+        }
+        
+
     }
 
     //cierra la sesion que esta abierta y redirige al home
     public function logout()
     {
-        session_start();
+        if(session_status()!=PHP_SESSION_ACTIVE){
+            session_start();
+        }
         session_destroy();
-        header('Location:' . BASE_URL . 'showBandas');
+        header('Location:' . BASE_URL . 'listaBandas');
     }
 
 

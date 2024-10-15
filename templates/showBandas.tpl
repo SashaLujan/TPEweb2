@@ -1,8 +1,10 @@
-{include 'header.tpl'}
 
 {if {$logueado} == true} 
     {include 'headerAdmin.tpl'}
+{else}
+    {include 'header.tpl'}
 {/if}
+    
 
 <div>
    <h4 class="blockquote">Bandas</h4>
