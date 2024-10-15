@@ -17,8 +17,14 @@ class LoginController
         $this->viewPublic = new PublicView();
     }
 
-    //verifica que el usuario ingresado sea correcto
-    public function loginAdmin() {}
+    
+    public function login(){
+        if(!empty($_POST)){
+
+            $email= $_
+            
+        }
+    }
 
     //cierra la sesion que esta abierta y redirige al home
     public function logout()
@@ -27,6 +33,7 @@ class LoginController
         session_destroy();
         header('Location:' . BASE_URL . 'showBandas');
     }
+
 
     //agregar usuario
     public function addUser() {}

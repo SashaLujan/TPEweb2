@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2024 a las 23:50:48
+-- Tiempo de generación: 15-10-2024 a las 14:35:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `bandas` (
 
 INSERT INTO `bandas` (`id_banda`, `nombre_banda`, `img_banda`) VALUES
 (1, 'The Beach Boys', ''),
-(2, 'Metallica', '');
+(2, 'Metallica', 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8481d620645973fe11fe5b2782');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `canciones` (
 --
 
 INSERT INTO `canciones` (`id_cancion`, `nombre_cancion`, `letra`, `genero`, `id_banda_fk`) VALUES
-(1, 'Orion', 'letra', 'Heavy metal', 2);
+(1, 'Nothing Else Matters', 'So close, no matter how far\r\nCouldn\'t be much more from the heart\r\nForever trusting who we are\r\nAnd nothing else matters\r\nNever opened myself this way\r\nLife is ours, we live it our way\r\nAll these words, I don\'t just say\r\nAnd nothing else matters\r\nTrust I seek and I find in you\r\nEvery day for us something new\r\nOpen mind for a different view\r\nAnd nothing else matters\r\nNever cared for what they do\r\nNever cared for what they know\r\nBut I know\r\nSo close, no matter how far\r\nIt couldn\'t be much more from the heart\r\nForever trusting who we are\r\nAnd nothing else matters\r\nNever cared for what they do\r\nNever cared for what they know\r\nBut I know\r\nI never opened myself this way\r\nLife is ours, we live it our way\r\nAll these words, I don\'t just say\r\nAnd nothing else matters\r\nTrust I seek and I find in you\r\nEvery day for us something new\r\nOpen mind for a different view\r\nAnd nothing else matters\r\nNever cared for what they say\r\nNever cared for games they play\r\nNever cared for what they do\r\nNever cared for what they know\r\nAnd I know, yeah, yeah\r\nSo close, no matter how far\r\nCouldn\'t be much more from the heart\r\nForever trusting who we are\r\nNo, nothing else matters', 'Heavy metal', 2);
 
 -- --------------------------------------------------------
 
@@ -72,6 +72,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `nombre_usuario` varchar(50) NOT NULL,
+  `email_usuario` varchar(50) NOT NULL,
   `contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -79,8 +80,8 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `nombre_usuario`, `contraseña`) VALUES
-(1, 'webadmin', 'webadmin', 'admin');
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `nombre_usuario`, `email_usuario`, `contraseña`) VALUES
+(1, 'webadmin', 'webadmin', '', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +104,9 @@ ALTER TABLE `canciones`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
+  ADD UNIQUE KEY `email_usuario` (`email_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

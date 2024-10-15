@@ -50,6 +50,11 @@ switch ($parametros[0]) {
         $controller->addUser();
         break;
 
+    case 'abrir_sesion':
+        $controller = new LoginController();
+        $controller->login();
+        break;
+
     case 'cerrar_sesion':
         $controller = new LoginController();
         $controller->logout();
