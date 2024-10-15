@@ -4,7 +4,7 @@ require_once 'models/login.model.php';
 require_once 'views/public.view.php';
 require_once 'views/admin.view.php';
 require_once 'helpers/auth.helper.php';
-//require_once 'views/base.view.php';
+
 
 class LoginController
 {
