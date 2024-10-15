@@ -1,53 +1,48 @@
 <?php
 
-require_once 'libs/Smarty.class.php';
-require_once 'helpers/auth.helper.php';
+require_once 'views/base.view.php';
 
-class PublicView{
-
-    private $smarty;
+class PublicView extends BaseView{
 
     public function __construct()
     {
-        $this->smarty = new Smarty();
-        $nameUser = authHelper::nameLogged();
-        $this->smarty->assign('nameUser', $nameUser);
+        parent::__construct();
     }
 
     public function showError($msg)
     {
-        $this->smarty->assign('mensaje', $msg);
-        $this->smarty->display('templates/error.tpl');
+        $this->getSmarty()->assign('mensaje', $msg);
+        $this->getSmarty()->display('templates/error.tpl');
     }
 
     //muetra todas las bandas
-    public function showBandas($bandas, $logueado)
+    public function showBandas($bandas)
     {
-        $this->smarty->assign('listaBandas', $bandas);
-        $this->smarty->assign('logueado', $logueado);
-        $this->smarty->display('showBandas.tpl');
+        $this->getSmarty()->assign('listaBandas', $bandas);
+        $this->getSmarty()->display('showBandas.tpl');
     }
 
     //muetra todas las computadoras de una marca
     public function cancionesByBanda($cancionesPorBanda)
     {
-        $this->smarty->assign('cancionesPorBanda', $cancionesPorBanda);
-        $this->smarty->display('cancionesPorBanda.tpl');
+        $this->getSmarty()->assign('cancionesPorBanda', $cancionesPorBanda);
+        $this->getSmarty()->display('cancionesPorBanda.tpl');
     }
 
      //muestra un formulario para poder cargar un usuario nuevo
      public function formCheck($error=null){
-        $this->smarty->assign('error', $error);
-        $this->smarty->display('formUser.tpl');
+        $this->getSmarty()->assign('error', $error);
+        $this->getSmarty()->display('formUser.tpl');
     }
 
     public function showcanciones($canciones){
-        $this->smarty->assign('listaCanciones', $canciones);
-        $this->smarty->display('showCanciones.tpl');
+        $this->getSmarty()->assign('listaCanciones', $canciones);
+        $this->getSmarty()->display('showCanciones.tpl');
     }
 
     public function showcancion($cancion){
-        $this->smarty->assign('cancion', $cancion);
-        $this->smarty->display('showCancion.tpl');
+        
+        $this->getSmarty()->assign('cancion', $cancion);
+        $this->getSmarty()->display('showCancion.tpl');
     }
 }

@@ -4,6 +4,7 @@ require_once 'models/login.model.php';
 require_once 'views/public.view.php';
 require_once 'views/admin.view.php';
 require_once 'helpers/auth.helper.php';
+//require_once 'views/base.view.php';
 
 class LoginController
 {
@@ -26,16 +27,12 @@ class LoginController
         }
  
         $usuario = $this->modelLogin->getUser($nombre_usuario);
-        if(!empty($usuario)){
-            if($contraseña==$usuario->contraseña){
+    
+            if(!empty($usuario)&& password_verify($contraseña,$usuario->contraseña)){
 
                 AuthHelper::login($usuario);
                 header("location: " . BASE_URL . 'listaBandas');
             }
-        }else{
-            //TODO debería mostrar a la vista que el username no existe
-        }
-        
 
     }
 

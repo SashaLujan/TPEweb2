@@ -1,37 +1,34 @@
 <?php
 
 require_once 'libs/Smarty.class.php';
-require_once 'helpers/auth.helper.php';
+require_once 'views/base.view.php';
 
-class AdminView
-{
+class AdminView extends BaseView{
 
-    private $smarty;
 
     public function __construct()
     {
-        $this->smarty = new Smarty();
-        $nameUser = authHelper::nameLogged();
-        $this->smarty->assign('nameUser', $nameUser);
+        parent::__construct();
+      
     }
 
     //muestra un formulario para agregar una banda
     public function formBandaAdd($error = null)
     {
-        $this->smarty->assign('error', $error);
-        $this->smarty->display('formBandaAdd.tpl');
+        $this->getSmarty()->assign('error', $error);
+        $this->getSmarty()->display('formBandaAdd.tpl');
     }
 
     //muestra un formulario para editar una banda
     public function showFormEditBanda($banda)
     {
-        $this->smarty->assign('listaBandas', $banda);
-        $this->smarty->display('showFormEditBanda.tpl');
+        $this->getSmarty()->assign('listaBandas', $banda);
+        $this->getSmarty()->display('showFormEditBanda.tpl');
     }
 
     public function showError($msg)
     {
-        $this->smarty->assign('mensaje', $msg);
-        $this->smarty->display('error.tpl');
+        $this->getSmarty()->assign('mensaje', $msg);
+        $this->getSmarty()->display('error.tpl');
     }
 }
