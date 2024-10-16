@@ -42,4 +42,10 @@ class CancionesModel extends Model
         $sentencia = $this->db->prepare("UPDATE canciones SET nombre_cancion =?, letra=?, genero=?, id_banda_fk=? WHERE id_cancion = ?"); // prepara la consulta        
         return $sentencia->execute([$nombre_cancion,$letra_cancion,$genero_cancion,$id_banda, $id_cancion]); // ejecuta
     }
+    public function delete($id_cancion)
+    {
+        $sentencia = $this->db->prepare("DELETE FROM canciones  WHERE id_cancion = ?"); // prepara la consulta
+        $sentencia->execute([$id_cancion]); // ejecuta 
+        return $sentencia;
+    }
 }

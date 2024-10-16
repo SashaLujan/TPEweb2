@@ -102,7 +102,7 @@ switch ($parametros[0]) {
         $controller->editCancion();
         break;
 
-    case 'eliminarcancion':
+    case 'eliminarCancion':
         $controller = new AdminController();
         $controller->deleteCancion($parametros[1]);
         break;

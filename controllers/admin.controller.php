@@ -131,6 +131,18 @@ class AdminController{
         }else{
             $this->showError("ERROR! quedaron campos vacios");
         }
+
+       
     }
-    //deleteCancion($id_cancion){}   
+    public function deleteCancion($id_cancion){
+        $eliminada = $this->modelCanciones->delete($id_cancion);
+        if($eliminada){
+
+            header('Location: ' . BASE_URL . 'listaCanciones');
+        }else{
+
+            $this->showError("ERROR! no se pudo eliminar la canción, intente nuevamente");
+        }
+    }
+      
 }
