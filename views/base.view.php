@@ -7,7 +7,6 @@ class BaseView{
 
         $this->smarty= new Smarty();
         $this->smarty->assign('base_url' , BASE_URL);
-        $this->smarty->assign('aviso', NULL);
         $nameUser = authHelper::nameLogged();
         $this->smarty->assign('nameUser', $nameUser);
         $logueado= authHelper::checkLogged();
@@ -15,10 +14,6 @@ class BaseView{
 
     }
 
-    public function setAviso($aviso){
-
-        $this->smarty->assign('aviso', $aviso);
-    }
     public function getSmarty(){
         return $this->smarty;
     }
