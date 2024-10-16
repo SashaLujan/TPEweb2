@@ -32,4 +32,14 @@ class CancionesModel extends Model
         $cancion = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $cancion;
     }
+    public function addCancion($nombre_cancion,$letra_cancion,$genero_cancion,$id_banda){
+
+        $sentencia = $this->db->prepare("INSERT INTO canciones(nombre_cancion, letra, genero, id_banda_fk) VALUES(?,?,?,?)"); // prepara la consulta        
+        return $sentencia->execute([$nombre_cancion,$letra_cancion,$genero_cancion,$id_banda]); // ejecuta
+    }
+    public function editCancion($nombre_cancion,$letra_cancion,$genero_cancion,$id_banda,$id_cancion){
+
+        $sentencia = $this->db->prepare("UPDATE canciones SET nombre_cancion =?, letra=?, genero=?, id_banda_fk=? WHERE id_cancion = ?"); // prepara la consulta        
+        return $sentencia->execute([$nombre_cancion,$letra_cancion,$genero_cancion,$id_banda, $id_cancion]); // ejecuta
+    }
 }

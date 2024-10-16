@@ -77,4 +77,60 @@ class AdminController{
     {
         $this->viewAdmin->showError($msg);
     }
+
+    public function formCancion(){
+        $bandas=$this->modelBandas->getAll();
+        $this->viewAdmin->formCancionAdd($bandas);
+    }
+
+    public function addCancion(){
+        $nombre_cancion = $_POST["nombreCancion"];
+        $id_banda = $_POST["idBanda"];
+        $letra_cancion = $_POST["letraCancion"];
+        $genero_cancion = $_POST["genero"];
+
+        if(!empty($nombre_cancion)&&!empty($id_banda)&&!empty($letra_cancion)&&!empty($genero_cancion)){
+            
+           $agregada = $this->modelCanciones->addCancion($nombre_cancion,$letra_cancion,$genero_cancion,$id_banda);
+            if($agregada){
+
+                header('Location: ' . BASE_URL . 'listaCanciones');
+            }else{
+
+                $this->showError("ERROR! no se pudo agregar la canción, intente nuevamente");
+            }
+        }else{
+            $this->showError("ERROR! quedaron campos vacios");
+        }
+      
+    }
+    public function formEditCancion($id_cancion){
+
+        $cancion = $this->modelCanciones->cancion($id_cancion);
+        $bandas=$this->modelBandas->getAll();
+        $this->viewAdmin->formCancionEdit($cancion, $bandas);
+    }
+
+    public function editCancion(){
+
+        $nombre_cancion = $_POST["nombreCancion"];
+        $id_banda = $_POST["idBanda"];
+        $letra_cancion = $_POST["letraCancion"];
+        $genero_cancion = $_POST["genero"];
+        $id_cancion=$_POST["id_cancion"];
+        if(!empty($nombre_cancion)&&!empty($id_banda)&&!empty($letra_cancion)&&!empty($genero_cancion)&&!empty($id_cancion)){
+            
+           $editada = $this->modelCanciones->editCancion($nombre_cancion,$letra_cancion,$genero_cancion,$id_banda,$id_cancion);
+            if($editada){
+
+                header('Location: ' . BASE_URL . 'listaCanciones');
+            }else{
+
+                $this->showError("ERROR! no se pudo editar la canción, intente nuevamente");
+            }
+        }else{
+            $this->showError("ERROR! quedaron campos vacios");
+        }
+    }
+    //deleteCancion($id_cancion){}   
 }

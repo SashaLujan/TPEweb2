@@ -31,4 +31,18 @@ class AdminView extends BaseView{
         $this->getSmarty()->assign('mensaje', $msg);
         $this->getSmarty()->display('error.tpl');
     }
+
+    public function formCancionAdd($bandas,$error = null)
+    {
+        $this->getSmarty()->assign('error', $error);
+        $this->getSmarty()->assign('bandas', $bandas);
+        $this->getSmarty()->display('formAddCancion.tpl');
+    }
+    public function formCancionEdit($cancion,$bandas,$error = null)
+    {
+        $this->getSmarty()->assign('error', $error);
+        $this->getSmarty()->assign('cancion', $cancion);
+        $this->getSmarty()->assign('bandas', $bandas);
+        $this->getSmarty()->display('formEditCancion.tpl');
+    }
 }

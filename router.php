@@ -82,6 +82,30 @@ switch ($parametros[0]) {
         $controller->deleteBanda($parametros[1]);
         break;
 
+    case 'agregarCancion':
+        $controller = new AdminController();
+        $controller->formCancion();
+        break;
+
+    case 'guardarCancion':
+        $controller = new AdminController();
+        $controller->addCancion();
+        break;
+        
+    case 'editarCancion':
+        $controller = new AdminController();
+        $controller->formEditCancion($parametros[1]);
+        break;
+    
+    case 'guardarEditCancion':
+        $controller = new AdminController();
+        $controller->editCancion();
+        break;
+
+    case 'eliminarcancion':
+        $controller = new AdminController();
+        $controller->deleteCancion($parametros[1]);
+        break;
 
     default:
         $controller = new PublicController();
