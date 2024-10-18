@@ -40,11 +40,11 @@ class BandasModel extends Model
         return $sentencia->execute([$nombre]); // ejecuta
     }
 
-    public function update($nombre)
+    public function update($nombre, $id)
     {
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $this->db->prepare("UPDATE bandas SET nombre_banda=? WHERE id_banda=?"); // prepara la consulta
-        return $sentencia->execute([$nombre]); // ejecuta
+        return $sentencia->execute([$nombre, $id]); // ejecuta
     }
 
     public function delete($id_banda)

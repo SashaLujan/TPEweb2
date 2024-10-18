@@ -3,12 +3,11 @@
     <div class="bandas"> 
         <form action="guardarEditBanda" method="POST" class="my-4">
             <h4>Modifique los datos de la banda</h4>
-            {foreach $listaBandas item= bandas}
             <div class="form-group">
                 <label>Nombre de la banda</label>
-                <input name="nombre" type="text" value={$bandas->nombre_banda} class="form-control">
+                <input name="nombre" type="text" value={$banda->nombre_banda} class="form-control">
+                <input name="id" type="text" value={$banda->id_banda} class="form-control" hidden>
             </div>
-            {/foreach}
             <button type="submit" class="btn btn-dark">Guardar</button>
             <a class="btn btn-dark" href="listaBandas"><b>Volver</b></a>
         </form>

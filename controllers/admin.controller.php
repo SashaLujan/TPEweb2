@@ -32,15 +32,15 @@ class AdminController{
 
     //guarda una nueva banda
     public function addBanda(){
-        if(empty($_POST['nombre_banda'])){
+        if(empty($_POST['nombre'])){
             $this->viewAdmin->showError("No completo los datos obligatorios");
         } else{
-            $banda = $this->modelBandas->getName($_POST['nombre_banda']);
+            $banda = $this->modelBandas->getName($_POST['nombre']);
             if(!empty($banda)){
                 $this->viewAdmin->showError("La banda ya existe");
             } else{
-                $this->modelBandas->insert($_POST['nombre_banda']);
-                header('Location: ' . BASE_URL . 'agregarBanda');
+                $this->modelBandas->insert($_POST['nombre']);
+                header('Location: ' . BASE_URL . 'listaBandas');
             }
         }
     }
@@ -55,13 +55,13 @@ class AdminController{
     //modifica una banda
     public function modifyBanda()
     {
-        if (empty($_POST['nombre_banda'])) {
-            $banda = $this->modelBandas->getName($_POST['nombre_banda']);
+        if (empty($_POST['nombre'])) {
+            $banda = $this->modelBandas->getName($_POST['nombre']);
             $this->viewAdmin->showFormEditBanda($banda, "completar todos los campos");
         }
         else{
-            $this->modelBandas->update($_POST['nombre_banda']);
-            $banda = $this->modelBandas->getName($_POST['nombre_banda']);
+            $this->modelBandas->update($_POST['nombre'], $_POST['id']);
+            $banda = $this->modelBandas->getName($_POST['nombre']);
             $this->viewAdmin->showFormEditBanda($banda, "los cambios se guardaron correctamente");
         }
     }

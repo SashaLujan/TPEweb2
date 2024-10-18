@@ -22,7 +22,7 @@ class AdminView extends BaseView{
     //muestra un formulario para editar una banda
     public function showFormEditBanda($banda)
     {
-        $this->getSmarty()->assign('listaBandas', $banda);
+        $this->getSmarty()->assign('banda', $banda);
         $this->getSmarty()->display('showFormEditBanda.tpl');
     }
 
