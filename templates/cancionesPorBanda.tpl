@@ -12,7 +12,7 @@
             {foreach $cancionesPorBanda item= canciones}
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title"> {strtoupper($canciones->nombre_cancion)} </p>
+                        <a href="mostrarCancion/{$canciones->id_cancion}" class="card-title"> {strtoupper($canciones->nombre_cancion)} </a>
                     </div>
                 </div>
             {/foreach}
