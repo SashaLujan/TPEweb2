@@ -19,6 +19,11 @@ class LoginController
         $this->viewPublic = new PublicView();
     }
 
+    public function showError($msg)
+    {
+        $this->viewAdmin->showError($msg);
+    }
+
     
     public function login(){
         if(!empty($_POST)){
@@ -32,6 +37,8 @@ class LoginController
 
                 AuthHelper::login($usuario);
                 header("location: " . BASE_URL . 'listaBandas');
+            }else{
+                $this->showError("los datos ingresados no coinciden");
             }
 
     }
