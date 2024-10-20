@@ -33,18 +33,18 @@ class BandasModel extends Model
         return $marca;
     }
 
-    public function insert($nombre)
+    public function insert($nombre,$foto)
     {
         // 2. enviamos la consulta
-        $sentencia = $this->db->prepare("INSERT INTO bandas(nombre_banda) VALUES(?)"); // prepara la consulta        
-        return $sentencia->execute([$nombre]); // ejecuta
+        $sentencia = $this->db->prepare("INSERT INTO bandas(nombre_banda, img_banda) VALUES(?,?)"); // prepara la consulta        
+        return $sentencia->execute([$nombre, $foto]); // ejecuta
     }
 
-    public function update($nombre, $id)
+    public function update($nombre, $foto, $id)
     {
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $this->db->prepare("UPDATE bandas SET nombre_banda=? WHERE id_banda=?"); // prepara la consulta
-        return $sentencia->execute([$nombre, $id]); // ejecuta
+        $sentencia = $this->db->prepare("UPDATE bandas SET nombre_banda=?, img_banda=? WHERE id_banda=?"); // prepara la consulta
+        return $sentencia->execute([$nombre,$foto, $id]); // ejecuta
     }
 
     public function delete($id_banda)

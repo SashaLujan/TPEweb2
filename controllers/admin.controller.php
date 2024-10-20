@@ -41,14 +41,16 @@ class AdminController
     public function addBanda()
     {
         if ($this->helper->checkLogged()) {
-            if (empty($_POST['nombre'])) {
+            $nombre = $_POST['nombre'];
+            $foto = $_POST['foto'];
+            if (empty($nombre) || empty($foto)) {
                 $this->viewAdmin->showError("No completo los datos obligatorios");
             } else {
-                $banda = $this->modelBandas->getName($_POST['nombre']);
+                $banda = $this->modelBandas->getName($nombre);
                 if (!empty($banda)) {
                     $this->viewAdmin->showError("La banda ya existe");
                 } else {
-                    $this->modelBandas->insert($_POST['nombre']);
+                    $this->modelBandas->insert($nombre, $foto);
                     header('Location: ' . BASE_URL . 'listaBandas');
                 }
             }
@@ -73,14 +75,21 @@ class AdminController
     {
         if ($this->helper->checkLogged()) {
 
-            if (empty($_POST['nombre'])) {
-                $banda = $this->modelBandas->getName($_POST['nombre']);
-                $this->viewAdmin->showFormEditBanda($banda, "completar todos los campos");
+            $nombre = $_POST['nombre'];
+            $foto = $_POST['foto'];
+            $id = $_POST['id'];
+            if (empty($nombre) || empty($foto) || empty($id)) {
+
+                $this->showError("Error, debe completar todos los campos");
             } else {
-                $this->modelBandas->update($_POST['nombre'], $_POST['id']);
-                $banda = $this->modelBandas->getName($_POST['nombre']);
-                $this->viewAdmin->showFormEditBanda($banda, "los cambios se guardaron correctamente");
-                header('Location: ' . BASE_URL . 'listaBandas');
+                $editado = $this->modelBandas->update($nombre, $foto, $id);
+                if (!$editado){
+                    $this->showError("ERROR! no se pudo editar la banda, intente nuevamente");
+                }
+                else{
+
+                    header('Location: ' . BASE_URL . 'listaBandas');
+                }
             }
         } else {
             header('Location: ' . BASE_URL . 'suscribirse');
