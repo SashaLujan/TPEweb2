@@ -63,7 +63,7 @@ class Model
             --
 
             INSERT INTO `bandas` (`id_banda`, `nombre_banda`, `img_banda`) VALUES
-            (1, 'The Beach Boys', ''),
+            (1, 'The Beach Boys', 'https://upload.wikimedia.org/wikipedia/commons/a/a8/The_Beach_Boys_%281965%29.png'),
             (2, 'Metallica', 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8481d620645973fe11fe5b2782');
 
             -- --------------------------------------------------------
