@@ -22,7 +22,7 @@ class Model
         $query = $this->db->query('SHOW TABLES');
         $tables = $query->fetchAll();
         if (count($tables) == 0) {
-            $sql = <<<END
+            $sql = <<<'END'
             -- phpMyAdmin SQL Dump
             -- version 5.2.1
             -- https://www.phpmyadmin.net/
