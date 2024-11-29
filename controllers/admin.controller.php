@@ -91,14 +91,22 @@ class AdminController
     }
 
     //elimina una banda
-    public function deleteBanda($id_Banda)
+    public function deleteBanda($id_banda)
     { 
-        $this->modelBandas->delete($id_Banda);
-        header('Location: ' . BASE_URL . 'listaBandas'); 
+        // Verifica si la banda tiene canciones asociadas
+        $tieneCanciones = $this->modelCanciones->getCancionesByBandas($id_banda);
+        if ($tieneCanciones) {
+            // Redirige a la lista de bandas con un mensaje de error
+            $this->showError("No se puede eliminar la banda porque tiene canciones asociadas");
+        }
+        else{
+            // Si no tiene canciones, elimina la banda
+            $this->modelBandas->delete($id_banda);
+            header('Location: ' . BASE_URL . 'listaBandas');
+        }
     }
 
-    public function showError($msg)
-    {
+    public function showError($msg) {
         $this->viewAdmin->showError($msg);
     }
 

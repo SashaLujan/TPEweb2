@@ -4,7 +4,6 @@
 {else}
     {include 'header.tpl'}
 {/if}
-    
 
 <div>
    <h4 class="blockquote">Bandas</h4>
@@ -33,5 +32,6 @@
         {/foreach}
     </div>
 </div>
- 
+
+
 {include 'footer.tpl'}
